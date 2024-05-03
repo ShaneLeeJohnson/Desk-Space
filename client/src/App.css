@@ -1,4 +1,28 @@
-#root {
+.m-plus-rounded-1c-regular {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@media screen and (max-width: 992px) {
+  body {
+      flex-wrap: column wrap; 
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+  body {
+        flex-wrap: column wrap;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+  body {
+        flex-wrap: column wrap; 
+    }
+  }
+  
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +63,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */
