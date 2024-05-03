@@ -2,7 +2,6 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { useState } from 'react'
 
 // Pages and Components Required for Application 
-import Loading from './layouts/Loading'
 import Home from './pages/Home'
 import MyDesk from './pages/MyDesk'
 import InterviewPrep from './components/InterviewPrep'
@@ -10,11 +9,12 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import FlashcardList from "./components/FlashcardList"
 import Flashcard from "./components/Flashcard"
+import Navbar from './components/Navbar'
 
 // Routes
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Loading />}>
+    <Route path='/' element={<Navbar />}>
       <Route path='home' element={<Home />} />
       <Route path='mydesk' element={<MyDesk />} />
       <Route path='interviewprep' element={<InterviewPrep />} />
