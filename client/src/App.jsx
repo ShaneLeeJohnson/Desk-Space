@@ -14,8 +14,8 @@ import Navbar from './components/Navbar'
 // Routes
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Navbar />}>
-      <Route path='home' element={<Home />} />
+    <Route>
+      <Route path='/' element={<Home />} />
       <Route path='mydesk' element={<MyDesk />} />
       <Route path='interviewprep' element={<InterviewPrep />} />
       <Route path='flashcards' element={<FlashcardList />} />
@@ -30,6 +30,7 @@ function App() {
   const [flashcards] = useState(SAMPLE_FLASHCARDS)
   return (
     <div>
+    <Navbar />
     <RouterProvider router={router} />
     <FlashcardList flashcards={flashcards}/>
     </div>
