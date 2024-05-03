@@ -10,11 +10,12 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import FlashcardList from "./components/FlashcardList"
 import Flashcard from "./components/Flashcard"
+import Navbar from './components/Navbar'
 
 // Routes
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Loading />}>
+    <Route path='/' element={<Navbar />}>
       <Route path='home' element={<Home />} />
       <Route path='mydesk' element={<MyDesk />} />
       <Route path='interviewprep' element={<InterviewPrep />} />
