@@ -2,7 +2,6 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { useState } from 'react'
 
 // Pages and Components Required for Application 
-import Loading from './layouts/Loading'
 import Home from './pages/Home'
 import MyDesk from './pages/MyDesk'
 import InterviewPrep from './components/InterviewPrep'
