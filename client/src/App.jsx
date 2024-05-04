@@ -10,7 +10,7 @@ import Signup from './components/Signup'
 import FlashcardList from "./components/FlashcardList"
 import Flashcard from "./components/Flashcard"
 import Navbar from './components/Navbar'
-
+import JobList from './components/JobList'
 // Routes
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +22,7 @@ const router = createBrowserRouter(
       <Route path='flashcard' element={<Flashcard />} />
       <Route path='login' element={<Login />} />
       <Route path='signup' element={<Signup />} />
+      <Route path='jobs' element={<JobList />} />
     </Route>
   )
 )
