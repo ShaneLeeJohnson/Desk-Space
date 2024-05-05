@@ -6,7 +6,7 @@ export const SIGNUP_MUTATION = gql`
         signup(username: $username, email: $email, password: $password) {
             token
             user {
-                id
+                _id
                 username
                 email
             }
