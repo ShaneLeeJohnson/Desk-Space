@@ -1,18 +1,24 @@
 import { useState } from 'react'
-import { Box, Card } from '@chakra-ui/react'
+import { Flex, Card } from '@chakra-ui/react'
 import '../App.css'
 
 export default function Flashcard({ flashcard }) {
     const [flip, setFlip] = useState(false)
+    
+    const cardStyle = {
+        ':hover': {
+            cursor: 'pointer',
+            animation: 'slide 2s linear'
+        }
+    }
 
+    // Set flashcards to flip on click
     return (
-    <Box display="inline-flex" gap="2" className={`card ${flip ? 'flip' : ''}`} 
+    <Flex className={`card ${flip ? 'flip' : ''}`} flexFlow="column wrap" justifyContent="center" alignItems="center" bg="brand.800" color="brand.600"
         onClick={() => setFlip(!flip)}>
-        <Box className="front"></Box>
-        <Box className="back"></Box>
-        <Card borderStyle="solid" borderWidth="4px" borderColor="black" m="2%" padding="10px" maxH="80%" maxW="80%" minH="275px" minW="285px">
+        <Card sx={cardStyle} flexGrow="0 1 auto"  borderStyle="solid" borderWidth="4px" borderColor="black" m="2%" boxShadow="lg" minW="70%" h="300px" pt="100px" pb="100px">
         {flip ? flashcard.answer : flashcard.question}
         </Card>
-    </Box>
+    </Flex>
     )
 }
