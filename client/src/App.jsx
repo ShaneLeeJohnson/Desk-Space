@@ -15,7 +15,6 @@ const router = createBrowserRouter(
     <Route>
       <Route path='/' element={<Home />} />
       <Route path='mydesk' element={<MyDesk />} />
-      <Route path='interviewprep' element={<InterviewPrep />} />
       <Route path='flashcards' element={<InterviewPrep />} />
       <Route path='flashcard' element={<Flashcard />} />
       <Route path='login' element={<Login />} />
