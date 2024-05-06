@@ -4,14 +4,6 @@
   font-style: normal;
 }
 
-span {
-  text-decoration: underline;
-}
-
-a:hover {
-  color:rgb(93, 91, 114);
-}
-
 @media screen and (max-width: 992px) {
   body {
       flex-wrap: column wrap; 
