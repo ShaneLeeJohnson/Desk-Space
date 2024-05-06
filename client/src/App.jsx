@@ -8,6 +8,7 @@ import Signup from './components/Signup'
 import Flashcard from "./components/Flashcard"
 import Navbar from './components/Navbar'
 import JobList from './components/JobList'
+import Footer from './components/Footer'
 import './App.css';
 // Routes
 const router = createBrowserRouter(
@@ -30,6 +31,7 @@ function App() {
     <Navbar />
     <RouterProvider router={router} />
     {/* <FlashcardList flashcards={flashcards}/> */}
+    <Footer />
     </div>
   )
 }
