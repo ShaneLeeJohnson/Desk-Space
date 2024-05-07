@@ -1,3 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://ccarroll:182TIAxgoSFvjwaZ@deskspace.5skiygl.mongodb.net/');
+
+// Providing connection strings to the MongoDB Atlas cloud database and the MongoDB Compass local database
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/tech-friends');
+
 module.exports = mongoose.connection;
