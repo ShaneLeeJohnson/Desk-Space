@@ -12,11 +12,13 @@ const typeDefs = `
         password: String!
         flashcards: [Flashcard!]!
     }
+
     
     type Query {
         flashcards: [Flashcard!]!
         flashcard(_id: ID!): Flashcard
         user(_id: ID!): User
+        users: [User]
     }
     
     type Mutation {
