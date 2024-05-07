@@ -17,7 +17,15 @@ export default function Flashcard({ flashcard }) {
     <Flex className={`card ${flip ? 'flip' : ''}`} flexFlow="column wrap" justifyContent="center" alignItems="center" bg="brand.800" color="brand.600"
         onClick={() => setFlip(!flip)}>
         <Card sx={cardStyle} flexGrow="0 1 auto"  borderStyle="solid" borderWidth="4px" borderColor="black" m="2%" boxShadow="lg" minW="70%" h="300px" pt="100px" pb="100px">
-        {flip ? flashcard.answer : flashcard.question}
+        {!flip && (
+            <>
+                <h2 style={{fontFamily:'Nunino', fontWeight:'bolder', fontSize:'20px'}}>{flashcard.question}</h2>
+                <ul style={{listStyleType:'none'}}>{flashcard.choices.map((choice, index) => (<li key={index}>{choice}</li>))}</ul>
+            </>
+        )}
+        {flip && (
+            <h2>{flashcard.answer}</h2>
+        )}
         </Card>
     </Flex>
     )
