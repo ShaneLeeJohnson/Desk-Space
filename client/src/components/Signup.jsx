@@ -56,17 +56,17 @@ const Signup = () => {
                 <Stack spacing={4}>
                     <FormControl id='username'>
                         <FormLabel>User Name</FormLabel>
-                        <Input type='text' name='username' value={formData.username} onChange={handleChange} />
+                        <Input type='text' name='username' value={formData.username} onChange={handleChange} placeholder='Please Enter User Name' borderColor='darkgray' borderWidth='2px' />
                     </FormControl>
                     <FormControl id='email'>
                         <FormLabel>Email</FormLabel>
-                        <Input type='email' name='email' value={formData.email} onChange={handleChange} />
+                        <Input type='email' name='email' value={formData.email} onChange={handleChange} placeholder='Please Enter Email' borderColor='darkgray' borderWidth='2px' />
                     </FormControl>
                     <FormControl id='password'>
                         <FormLabel>Password</FormLabel>
-                        <Input type='password' name='password' value={formData.password} onChange={handleChange} />
+                        <Input type='password' name='password' value={formData.password} onChange={handleChange} placeholder='Please Enter Password' borderColor='darkgray' borderWidth='2px' />
                     </FormControl>
-                    <Button type='submit' colorScheme='teal' isLoading={loading}>{loading ? <Spinner size='sm' color='white' /> : 'Sign Up'}</Button> {error && <Text color='red'>Error: {error.message}</Text>}
+                    <Button type='submit' colorScheme='blue' isLoading={loading}>{loading ? <Spinner size='sm' color='white' /> : 'Sign Up'}</Button> {error && <Text color='red'>Error: {error.message}</Text>}
                 </Stack>
             </form>
         </Box>

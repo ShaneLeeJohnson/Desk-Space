@@ -1,16 +1,23 @@
-import {Box, Flex, Text, IconButton, Link} from '@chakra-ui/react';
-import {FaFacebook, FaInstagram, FaTwitter} from 'react-icons/fa';
+import {Box, Flex, Text, IconButton, Link, SimpleGrid} from '@chakra-ui/react';
+import {FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest, FaTiktok, FaSnapchat} from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <Box as='footer' bg='ivory' color='black' p={10}>
-            <Flex justify='space-between' align='center'>
+        <Box as='footer' bg='ivory' color='black' p={4}>
+            <Flex justify='space-between' align='center' direction={['column', 'row']}>
                 <Text fontSize='lg' fontWeight='bold' fontFamily='Nunito'>© 2024 Desk Space. All Rights Reserved.</Text>
-                <Flex>
+                <Flex mt={[4, 0]} flexWrap='wrap'>
                     <Text fontSize='lg' fontWeight='bold' fontFamily='Nunito' p={3}>Follow Us</Text>
-                    <IconButton as={Link} href='https://facebook.com' aria-label='Facebook' icon={<FaFacebook />} variant='ghost' size='2xl' color='gray' _hover={{color:'blue'}} mr={2}/>
-                    <IconButton as={Link} href='https://instagram.com' aria-label='Instagram' icon={<FaInstagram />} variant='ghost' size='2xl' color='gray' _hover={{color:'pink'}} mr={2}/>
-                    <IconButton as={Link} href='https://twitter.com' aria-label='Twitter' icon={<FaTwitter />} variant='ghost' size='2xl' color='gray' _hover={{color:'black'}} mr={2}/>
+                    <SimpleGrid columns={[4,8]} spacing={2}>
+                        <IconButton as={Link} href='https://facebook.com' aria-label='Facebook' icon={<FaFacebook />} variant='ghost' size='2xl' color='blue' _hover={{color:'black'}} mr={1}/>
+                        <IconButton as={Link} href='https://instagram.com' aria-label='Instagram' icon={<FaInstagram />} variant='ghost' size='2xl' color='purple' _hover={{color:'black'}} mr={1}/>
+                        <IconButton as={Link} href='https://twitter.com' aria-label='Twitter' icon={<FaTwitter />} variant='ghost' size='2xl' color='teal' _hover={{color:'black'}} mr={1}/>
+                        <IconButton as={Link} href='https://linkedin.com' aria-label='Linkedin' icon={<FaLinkedin />} variant='ghost' size='2xl' color='blue' _hover={{color:'black'}} mr={1}/>
+                        <IconButton as={Link} href='https://youtube.com' aria-label='Youtube' icon={<FaYoutube />} variant='ghost' size='2xl' color='red' _hover={{color:'black'}} mr={1}/>
+                        <IconButton as={Link} href='https://pinterest.com' aria-label='Pinterest' icon={<FaPinterest />} variant='ghost' size='2xl' color='darkred' _hover={{color:'black'}} mr={1}/>
+                        <IconButton as={Link} href='https://tiktok.com' aria-label='Tiktok' icon={<FaTiktok />} variant='ghost' size='2xl' color='black' _hover={{color:'black'}} mr={1}/>
+                        <IconButton as={Link} href='https://snapchat.com' aria-label='Snapchat' icon={<FaSnapchat />} variant='ghost' size='2xl' color='yellow' _hover={{color:'black'}} mr={1}/>
+                    </SimpleGrid>
                 </Flex>
             </Flex>
         </Box>

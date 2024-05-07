@@ -12,7 +12,7 @@ function Navbar () {
                     {isOpen && (
                     <Box position='absolute' top='100%' left={0} zIndex={10} width='100%' bg='ivory' color='black' p={2}>
                         <Stack spacing={6} align='left'>
-                            <Link href='/home' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>Home</Link>
+                            {/* <Link href='/home' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>Home</Link> */}
                             <Link href='/mydesk' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>My Desk</Link>
                             <Link href='/login' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>Log In</Link>
                             <Link href='/signup' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>Sign Up</Link>
@@ -25,9 +25,9 @@ function Navbar () {
             <Box display={{base:'none', md:'block'}}>
                 <Flex align='center' justify='between'>
                     <Breadcrumb separator={<ChevronRightIcon/>}>
-                        <BreadcrumbItem>
+                        {/* <BreadcrumbItem>
                             <BreadcrumbLink href='/home' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>Home</BreadcrumbLink>
-                        </BreadcrumbItem>
+                        </BreadcrumbItem> */}
                         <BreadcrumbItem>
                             <BreadcrumbLink href='/mydesk' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>My Desk</BreadcrumbLink>
                         </BreadcrumbItem>
