@@ -15,12 +15,12 @@ const Signup = () => {
     const [token, setToken] = useState('');
     const [signupMutation, {loading,error}] = useMutation(SIGNUP_MUTATION);
     useEffect (() => {
-        const token = localStorage.getItem('token');
-        if (token) {
+        const t = localStorage.getItem('token');
+        if (t) {
             setToken (token);
             setAuthToken (token);
         }
-    }, []);
+    }, [token]);
     const handleChange = (e) => {
         const {name, value} = e.target;
         setFormData ({
@@ -39,7 +39,7 @@ const Signup = () => {
                 },
             });
             console.log('Sign Up Response:', data);
-            const {token} = data.signup;
+            const {token} = data.addUser;
             setToken (token);
             setAuthToken (token);
             localStorage.setItem ('token', token);
