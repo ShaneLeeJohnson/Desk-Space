@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Added MongoDB Atlas connection string with URL encoded password
-mongoose.connect(process.env.MONGODB_URI || `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PW}@deskspacecluster.1ynlold.mongodb.net/`);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/tech-friends');
 
 module.exports = mongoose.connection;
