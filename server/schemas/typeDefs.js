@@ -1,21 +1,22 @@
 const typeDefs = `
     type Flashcard {
-        id: ID!
+        _id: ID!
         question: String!
         answer: String!
     }
     
     type User {
-        id: ID!
+        _id: ID!
         username: String!
         email: String!
+        password: String!
         flashcards: [Flashcard!]!
     }
     
     type Query {
         flashcards: [Flashcard!]!
         flashcard(_id: ID!): Flashcard
-        user(id: ID!): User
+        user(_id: ID!): User
     }
     
     type Mutation {
