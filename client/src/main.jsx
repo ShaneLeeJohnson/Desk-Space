@@ -55,10 +55,11 @@ const router = createBrowserRouter([
 
 const colors = {
   brand: {
-    900: '#000000', // black
+    900: '#2D3748', // darkest gray
     800: '#4A5568', // dark gray
     700: '#FEEBC8', // light orange
-    600: '#FFFFFF' // white
+    600: '#FFFFFF', // white
+    500: '#BEE3F8', // light blue
   }
 }
 

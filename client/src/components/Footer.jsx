@@ -3,9 +3,9 @@ import {FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest, 
 
 const Footer = () => {
     return (
-        <Box as='footer' bg='ivory' color='black' p={4}>
+        <Box as='footer' bg='ivory' color='black' p={2}>
             <Flex justify='space-between' align='center' direction={['column', 'row']}>
-                <Text fontSize='lg' fontWeight='bold' fontFamily='Nunito'>© 2024 Desk Space. All Rights Reserved.</Text>
+                <Text fontSize='lg' fontWeight='bold' fontFamily='Nunito'>© 2024 DeskSpace. All Rights Reserved.</Text>
                 <Flex mt={[4, 0]} flexWrap='wrap'>
                     <Text fontSize='lg' fontWeight='bold' fontFamily='Nunito' p={3}>Follow Us</Text>
                     <SimpleGrid columns={[4,8]} spacing={2}>

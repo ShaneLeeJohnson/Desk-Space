@@ -15,20 +15,28 @@ import {
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import Auth from "../utils/auth";
 
+
 function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+
+  const linkStyle = {
+    ':hover': {
+      color: 'black'
+    }
+  }
+
   return (
     <Flex
       direction="row"
       align="center"
       justify="center"
       wrap="wrap"
-      p={4}
-      bg="ivory"
-      color="black"
+      p={3}
+      bg="brand.500"
+      color="brand.900"
       position="relative"
     >
-      <Box display={{ base: "block", md: "none" }}>
+      <Box display={{ base: "block", md: "none" }} mr="1">
         <Button onClick={onToggle} variant="ghost">
           {isOpen ? <CloseIcon w={6} h={6} /> : <HamburgerIcon w={6} h={6} />}
         </Button>
@@ -40,31 +48,38 @@ function Navbar() {
               left={0}
               zIndex={10}
               width="100%"
-              bg="ivory"
-              color="black"
-              p={2}
+              bg="brand.500"
+              color="brand.800"
+              mr="1"
+              borderRadius="0px 0px 10px 10px"
             >
-              <Stack spacing={6} align="left">
-                {/* <Link href='/home' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>Home</Link> */}
-                <Link
-                  href="/mydesk"
-                  mx={3}
-                  my={3}
-                  fontFamily="Nunito"
-                  fontWeight="bold"
-                >
-                  My Desk
-                </Link>
+              <Stack spacing={6} align="left" fontWeight="600">
+                {/* <Link href='/home' mx={3} my={3} fontFamily='Nunito' fontWeight='500'>Home</Link> */}
                 {Auth.loggedIn() ? (
-                    <Link mx={3} my={3} fontFamily='Nunito' fontWeight='bold' onClick={()=>Auth.logout()}>
+                  <>
+                  <Link
+                    href="/mydesk"
+                    mx={3}
+                    mt={1}
+                    fontWeight="500"
+                    sx={linkStyle}
+                    >
+                    MyDesk
+                    </Link>
+                    <Link 
+                    onClick={()=>Auth.logout()}
+                    mx={3} 
+                    mb={2} 
+                    sx={linkStyle}>
                         Logout
-                    </Link>) : ( <>
+                    </Link>
+                    </>
+                    ) : ( <>
                 <Link
                   href="/login"
                   mx={3}
                   my={3}
-                  fontFamily="Nunito"
-                  fontWeight="bold"
+                  sx={linkStyle}
                 >
                   Log In
                 </Link>
@@ -72,8 +87,7 @@ function Navbar() {
                   href="/signup"
                   mx={3}
                   my={3}
-                  fontFamily="Nunito"
-                  fontWeight="bold"
+                  sx={linkStyle}
                 >
                   Sign Up
                 </Link></>)}
@@ -82,40 +96,36 @@ function Navbar() {
           )}
         </Collapse>
       </Box>
-      <Box>
-        <a href="/" style={{ fontSize: "1.8rem", fontWeight: "bold" }}>
-          Desk Space
+      <Box mr="2" fontWeight="450" sx={linkStyle} color="brand.800">
+        <a href="/" style={{ fontSize: "1.6rem"}}>
+          DeskSpace
         </a>
       </Box>
-      <Box display={{ base: "none", md: "block" }}>
+      <Box display={{ base: "none", md: "block" }} fontWeight="500" color="brand.800">
         <Flex align="center" justify="between">
           <Breadcrumb separator={<ChevronRightIcon />}>
-            {/* <BreadcrumbItem>
-                            <BreadcrumbLink href='/home' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>Home</BreadcrumbLink>
-                        </BreadcrumbItem> */}
-            <BreadcrumbItem>
-              <BreadcrumbLink
-                href="/mydesk"
-                mx={3}
-                my={3}
-                fontFamily="Nunito"
-                fontWeight="bold"
-              >
-                My Desk
-              </BreadcrumbLink>
-            </BreadcrumbItem>
             {Auth.loggedIn() ? (
+            <>            
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  href="/mydesk"
+                  mx={3}
+                  my={3}
+                  sx={linkStyle}>
+                  My Desk
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
               <BreadcrumbItem>
                 <BreadcrumbLink
                   mx={3}
                   my={3}
-                  fontFamily="Nunito"
-                  fontWeight="bold"
+                  sx={linkStyle}
                   onClick={()=> Auth.logout()}
                 >
                   Logout
                 </BreadcrumbLink>
               </BreadcrumbItem>
+              </>
             ) : (
               <>
                 <BreadcrumbItem>
@@ -123,8 +133,7 @@ function Navbar() {
                     href="/login"
                     mx={3}
                     my={3}
-                    fontFamily="Nunito"
-                    fontWeight="bold"
+                    sx={linkStyle}
                   >
                     Log In
                   </BreadcrumbLink>
@@ -134,8 +143,7 @@ function Navbar() {
                     href="/signup"
                     mx={3}
                     my={3}
-                    fontFamily="Nunito"
-                    fontWeight="bold"
+                    sx={linkStyle}
                   >
                     Sign Up
                   </BreadcrumbLink>

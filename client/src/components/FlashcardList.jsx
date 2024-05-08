@@ -18,10 +18,10 @@ export default function FlashcardList({ flashcards }) {
     }
     return (
         // Shows a flashcard to the user with a "next" button 
-        <Flex bg="brand.800" flexFlow="column wrap" justifyContent="center" textAlign="center" mb="4%">
+        <Flex bg="brand.900" flexFlow="column wrap" justifyContent="center" textAlign="center" mb="4%">
             <Box color="brand.600">
                 <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex].id}/>
-                <Button sx={buttonStyle} onClick={nextCard} mt="2%" color="brand.600" bg="brand.900">Next Flashcard</Button>
+                <Button sx={buttonStyle} onClick={nextCard} mt="2%" color="brand.600" bg="black">Next Flashcard</Button>
             </Box>
         </Flex>
     )
