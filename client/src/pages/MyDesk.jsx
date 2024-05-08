@@ -1,4 +1,4 @@
-import { Flex, Box, Heading, Link, textDecoration } from '@chakra-ui/react';
+import { Flex, Box, Heading, Link } from '@chakra-ui/react';
 
 export default function MyDesk() {
     const linkStyle = {
@@ -18,8 +18,8 @@ export default function MyDesk() {
         }
     }
     return (
-        <Flex bg="brand.800" flexFlow="column wrap" justifyContent="center" alignItems="center" textAlign="center" borderRadius="0 0 10px 10px" p="30px">
-        <Heading as="h2" color="brand.500" fontSize="38px" fontWeight="400" mb="5">MyDesk</Heading>
+        <Flex bg="brand.800" flexFlow="column wrap" justifyContent="center" alignItems="center" textAlign="center" borderRadius="10px" m="4" pb="60px">
+        <Heading as="h2" color="brand.500" fontSize="38px" fontWeight="400" mb="5">My Desk</Heading>
             <Link href="/flashcards" sx={linkStyle}>
                 <Box display="flex" sx={boxStyle} justifyContent="center" alignSelf="center" bg="brand.600" borderStyle="solid" borderColor="black" borderWidth="4px" borderRadius="8px" boxShadow="lg" maxW="100%" maxH="100%" minH="230px" mt="2%">
                 <Heading fontSize="26px" fontWeight="500" alignSelf="center" p="4">
