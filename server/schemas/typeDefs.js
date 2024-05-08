@@ -9,31 +9,30 @@ const typeDefs = `
         _id: ID!
         username: String!
         email: String!
-        password: String!
-        flashcards: [Flashcard!]!
+        flashcards: [Flashcard]
     }
 
+    type AuthPayload {
+        token: String!
+        user: User!
+    }
     
     type Query {
         flashcards: [Flashcard!]!
         flashcard(_id: ID!): Flashcard
-        user(_id: ID!): User
+        user: User
         users: [User]
     }
     
     type Mutation {
         addUser(username: String!, email: String!, password: String!): AuthPayload!
-        addCard(question: String!, answer: String!): Flashcard!
+        addCard(question: String!, answer: String!): User
         updateUser(username: String!, email: String!): User
         updateCard(_id: ID!, question: String, answer: String): Flashcard
         removeCard(_id: ID!): Flashcard
-        login(email: String!, password: String!): AuthPayload!
+        login(username: String!, password: String!): AuthPayload!
     }
     
-    type AuthPayload {
-        token: String!
-        user: User!
-    }
 `;
 
 module.exports = typeDefs;

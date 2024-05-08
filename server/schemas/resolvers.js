@@ -31,36 +31,49 @@ const resolvers = {
 
       return { token, user };
     },
-    addCard: async (parent, { flashcard }, context) => {
+    addCard: async (parent, args, context) => {
       if (context.user) {
-        const flashcard = new Flashcard({ flashcard });
+        const flashCard = await Flashcard.create(args);
 
-        await User.findByIdAndUpdate(context.user._id, {
-          $push: { flashcard },
-        });
+        const user = await User.findByIdAndUpdate(
+          context.user._id,
+          {
+            $push: { flashcards: flashCard._id },
+          },
+          { new: true }
+        );
 
-        return flashcard;
+        return user;
       }
 
       throw AuthenticationError;
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
-        return await User.findByIdAndUpdate(context.user._id, args, {
-          new: true,
-        });
+        return await User.findByIdAndUpdate(
+          context.user._id,
+          { $set: { ...args } },
+          {
+            new: true,
+          }
+        );
       }
 
       throw AuthenticationError;
     },
-    updateCard: async (parent, { _id }) => {
-      return await Flashcard.findByIdAndUpdate(_id, { new: true });
+    updateCard: async (parent, args) => {
+      // missing the update content
+      return await Flashcard.findByIdAndUpdate(
+        args._id,
+        { $set: { ...args } },
+        { new: true }
+      );
     },
     removeCard: async (parent, { _id }) => {
       return Flashcard.findOneAndDelete({ _id });
     },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
 
       if (!user) {
         throw AuthenticationError;

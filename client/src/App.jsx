@@ -1,39 +1,50 @@
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
-// Pages and Components Required for Application 
-import Home from './pages/Home'
-import MyDesk from './pages/MyDesk'
-import InterviewPrep from './components/InterviewPrep'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import Flashcard from "./components/Flashcard"
-import Navbar from './components/Navbar'
-import JobList from './components/JobList'
-import Footer from './components/Footer'
-import './App.css';
-// Routes
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route>
-      <Route path='/' element={<Home />} />
-      <Route path='mydesk' element={<MyDesk />} />
-      <Route path='flashcards' element={<InterviewPrep />} />
-      <Route path='flashcard' element={<Flashcard />} />
-      <Route path='login' element={<Login />} />
-      <Route path='signup' element={<Signup />} />
-      <Route path='jobs' element={<JobList />} />
-    </Route>
-  )
-)
+import { Outlet } from "react-router-dom";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+
+import Navbar from "./components/Navbar";
+
+import Footer from "./components/Footer";
+import "./App.css";
+
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <div>
-    <Navbar />
-    <RouterProvider router={router} />
-    {/* <FlashcardList flashcards={flashcards}/> */}
-    <Footer />
-    </div>
-  )
+    <ApolloProvider client={client}>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </ApolloProvider>
+  );
 }
 
-export default App
+export default App;
