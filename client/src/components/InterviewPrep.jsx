@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 // import { useQuery } from '@apollo/client';
-import { Box, Heading } from '@chakra-ui/react'
+import { Flex, Box, Heading } from '@chakra-ui/react'
 import FlashcardList from './FlashcardList'
 import '../App.css'
 
@@ -14,13 +14,15 @@ export default function InterviewPrep() {
     //         setFlashcards(data.flashcards);
     //     }
     // }, [data]);
-    return (
+    return ( 
         <>
-            <Box textAlign="center" bg="brand.800" color="brand.600">
-                <Heading>Interview Prep Flashcards</Heading>
-                <Heading fontSize="22px" fontWeight="350" pt="2%">(Click on flashcard to flip it!)</Heading>
-            </Box>
-            <FlashcardList flashcards={flashcards} />
+        <Flex flexFlow="column wrap" justifyContent="center" textAlign="center" bg="brand.800" color="brand.600">
+        <Box bg="brand.900">
+            <Heading>Interview Prep Flashcards</Heading>
+            <Heading fontSize="22px" fontWeight="350">(Click on flashcard to flip it!)</Heading>
+        </Box>
+            <FlashcardList flashcards={flashcards}/>
+        </Flex>
         </>
     );
 }
