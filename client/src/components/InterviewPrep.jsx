@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react'
-import { useQuery } from '@apollo/client';
+// import { useQuery } from '@apollo/client';
 import { Box, Heading } from '@chakra-ui/react'
 import FlashcardList from './FlashcardList'
 import '../App.css'
 
 export default function InterviewPrep() {
-    // const [flashcards] = useState(SAMPLE_FLASHCARDS)
-    const { loading, error, data } = useQuery(FLASHCARDS);
-    const [flashcards, setFlashcards] = useState([]);
+    const [flashcards] = useState(SAMPLE_FLASHCARDS)
+    // const { loading, error, data } = useQuery(FLASHCARDS);
+    // const [flashcards, setFlashcards] = useState([]);
 
-    useEffect(() => {
-        if (data) {
-            setFlashcards(data.flashcards);
-        }
-    }, [data]);
+    // useEffect(() => {
+    //     if (data) {
+    //         setFlashcards(data.flashcards);
+    //     }
+    // }, [data]);
     return (
         <>
             <Box textAlign="center" bg="brand.800" color="brand.600">
