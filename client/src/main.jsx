@@ -1,18 +1,57 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
-import {ApolloProvider, ApolloClient, InMemoryCache} from '@apollo/client';
-// import {BrowserRouter as Router} from 'react-router-dom';
+
+import Home from './pages/Home'
+import MyDesk from './pages/MyDesk'
+import InterviewPrep from './components/InterviewPrep'
+import Login from './components/Login'
+import Signup from './components/Signup'
+import Flashcard from "./components/Flashcard"
+import JobList from './components/JobList'
+
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 // Import Chakra
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import './index.css'
 
-// Create Apollo Client Instance
-const client = new ApolloClient ({
-  uri: 'http://localhost:3001/graphql',
-  cache: new InMemoryCache (),
-});
+const router = createBrowserRouter([
+  {
+    path: '/', 
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Home />
+      },
+      {
+        path: 'mydesk', 
+        element: <MyDesk />
+      }, 
+      {
+        path: 'flashcards', 
+        element: <InterviewPrep />
+      },
+      {
+        path: 'flashcard', 
+        element: <Flashcard />
+      },
+      {
+        path: 'login', 
+        element: <Login />
+      },
+      {
+        path: 'signup', 
+        element: <Signup />
+      },
+      {
+        path: 'jobs', 
+        element: <JobList />
+      }
+    ]
+  }
+])
+
 
 const colors = {
   brand: {
@@ -23,13 +62,11 @@ const colors = {
   }
 }
 
+
+
 const theme = extendTheme({ colors })
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
+     <RouterProvider router={router}/>
     </ChakraProvider>
-  </React.StrictMode>,
 )
