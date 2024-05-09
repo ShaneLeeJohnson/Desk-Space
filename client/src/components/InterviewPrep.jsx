@@ -17,10 +17,10 @@ export default function InterviewPrep() {
     }, [data]);
     return ( 
         <>
-        <Flex flexFlow="column wrap" justifyContent="center" textAlign="center" bg="brand.800" color="brand.600">
-        <Box bg="brand.900">
+    <Flex flexFlow="column wrap" justifyContent="center" textAlign="center" bg="brand.900" color="brand.600">
+        <Box bg="black" p="3">
             <Heading>Interview Prep Flashcards</Heading>
-            <Heading fontSize="22px" fontWeight="350">(Click on flashcard to flip it!)</Heading>
+            <Heading fontSize="22px" fontWeight="350" m="2">(Click on flashcard to flip it)</Heading>
         </Box>
             <FlashcardList flashcards={flashcards}/>
         </Flex>

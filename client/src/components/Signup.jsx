@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import {
+  Flex, 
+  Heading,
   Box,
   Button,
   FormControl,
@@ -46,13 +48,20 @@ const Signup = () => {
     }
   };
 
+  const buttonStyle = {
+    ':hover': {
+        opacity: 0.99
+    }
+}
+
   // Chakra Styling for User Sign Up
   return (
-    <Box p={4} maxW="md" mx="auto">
-      
+    <Flex justifyContent="center" bg="brand.800" w="100%" h="100vh" borderRadius="0 0 10px 10px">
+      <Box p={4} bg="white" h="70%" minW="35%" mt="5" borderRadius="10px"> 
         <form onSubmit={handleSubmit}>
           <Stack spacing={4}>
             <FormControl id="username">
+              <Heading fontSize="28px" fontWeight="400" mb="4">Sign Up</Heading>
               <FormLabel>Username</FormLabel>
               <Input
                 type="text"
@@ -88,14 +97,14 @@ const Signup = () => {
                 borderWidth="2px"
               />
             </FormControl>
-            <Button type="submit" colorScheme="blue" isLoading={loading}>
-              {loading ? <Spinner size="sm" color="white" /> : "Sign Up"}
+            <Button type="submit" sx={buttonStyle} bg="brand.500" w="45%" border="solid 2px gray" mt="2" isLoading={loading}>
+              {loading ? <Spinner size="sm" color="brand.800" /> : "Sign Up"}
             </Button>{" "}
             {error && <Text color="red">Error: {error.message}</Text>}
           </Stack>
         </form>
-     
     </Box>
+    </Flex>
   );
 };
 

@@ -96,12 +96,12 @@ function Navbar() {
           )}
         </Collapse>
       </Box>
-      <Box mr="2" fontWeight="450" sx={linkStyle} color="brand.800">
+      <Box mr="2" fontWeight="450" sx={linkStyle} color="brand.900">
         <a href="/" style={{ fontSize: "1.6rem"}}>
           DeskSpace
         </a>
       </Box>
-      <Box display={{ base: "none", md: "block" }} fontWeight="500" color="brand.800">
+      <Box display={{ base: "none", md: "block" }} fontWeight="500" color="brand.900">
         <Flex align="center" justify="between">
           <Breadcrumb separator={<ChevronRightIcon />}>
             {Auth.loggedIn() ? (

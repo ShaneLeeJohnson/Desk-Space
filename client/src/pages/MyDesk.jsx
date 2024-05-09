@@ -14,7 +14,7 @@ export default function MyDesk() {
     const jobStyle = {
         ':hover': {
             bg: 'brand.500',
-            color: 'brand.800'
+            color: 'brand.900'
         }
     }
     return (

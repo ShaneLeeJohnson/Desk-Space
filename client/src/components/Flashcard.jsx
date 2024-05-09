@@ -13,13 +13,13 @@ export default function Flashcard({ flashcard }) {
 
     // Set flashcards to flip on click
     return (
-        <Flex flexFlow="column wrap" alignItems="center" bg="brand.900" color="brand.600">
+        <Flex flexFlow="column wrap" alignItems="center" justifyContent="center" bg="brand.900" color="brand.600">
             <Card onClick={() => setFlip(!flip)}
             className={`card ${flip ? 'flip' : ''}`}
-            sx={cardStyle} alignItems="center" borderStyle="solid" borderWidth="4px" borderColor="black" my="1%" mb="0" boxShadow="lg" maxW="90%" maxH="90%" minW="60%" minH="300px">
+            sx={cardStyle} borderStyle="solid" borderWidth="4px" borderColor="black" boxShadow="lg" maxW="90%" maxH="90%" minW="50%" minH="300px">
             {!flip && (
                 <>
-                <Heading flexGrow="0 1 auto" as="h2" fontWeight="450" fontSize="22px" mt="4%" mb="1%" maxW="350px" lineHeight="1.5">{flashcard.question}</Heading>
+                <Heading as="h2" alignSelf="center" fontWeight="450" fontSize="22px" mt="15%" maxW="350px" lineHeight="1.5">{flashcard.question}</Heading>
                     {/* <List listStyleType='none'>{flashcard.choices.map((choice, index) => (<ListItem key={index} textAlign="left" mt="1">{choice}</ListItem>))}</List> */}
                 </>
             )}
