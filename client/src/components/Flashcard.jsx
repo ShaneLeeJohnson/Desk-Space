@@ -19,7 +19,7 @@ export default function Flashcard({ flashcard }) {
             {!flip && (
                 <>
                 <Heading flexGrow="0 1 auto" as="h2" fontWeight="450" fontSize="22px" mt="4%" mb="1%" maxW="350px" lineHeight="1.5">{flashcard.question}</Heading>
-                    <List listStyleType='none'>{flashcard.choices.map((choice, index) => (<ListItem key={index} textAlign="left" mt="1">{choice}</ListItem>))}</List>
+                    {/* <List listStyleType='none'>{flashcard.choices.map((choice, index) => (<ListItem key={index} textAlign="left" mt="1">{choice}</ListItem>))}</List> */}
                 </>
             )}
             {flip && (
