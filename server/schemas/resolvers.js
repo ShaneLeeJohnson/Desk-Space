@@ -33,7 +33,7 @@ const resolvers = {
     },
     addCard: async (parent, args, context) => {
       if (context.user) {
-        const flashCard = await Flashcard.create(args);
+        const flashCard = await Flashcard.create({...args, createdBy: context.user._id});
 
         const user = await User.findByIdAndUpdate(
           context.user._id,
@@ -93,3 +93,4 @@ const resolvers = {
 };
 
 module.exports = resolvers;
+
