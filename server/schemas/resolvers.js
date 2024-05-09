@@ -7,7 +7,7 @@ const resolvers = {
       return await Flashcard.find();
     },
     flashcard: async (parent, { _id }) => {
-      return await Flashcard.findById(_id).populate("createdBy");
+      return await Flashcard.findById(_id).populate("flashcard");
     },
     user: async (parent, args, context) => {
       if (context.user) {
@@ -48,19 +48,19 @@ const resolvers = {
 
       throw AuthenticationError;
     },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return await User.findByIdAndUpdate(
-          context.user._id,
-          { $set: { ...args } },
-          {
-            new: true,
-          }
-        );
-      }
+    // updateUser: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return await User.findByIdAndUpdate(
+    //       context.user._id,
+    //       { $set: { ...args } },
+    //       {
+    //         new: true,
+    //       }
+    //     );
+    //   }
 
-      throw AuthenticationError;
-    },
+    //   throw AuthenticationError;
+    // },
     updateCard: async (parent, args) => {
       // missing the update content
       return await Flashcard.findByIdAndUpdate(
