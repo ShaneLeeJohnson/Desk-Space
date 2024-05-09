@@ -7,7 +7,7 @@ const resolvers = {
       return await Flashcard.find();
     },
     flashcard: async (parent, { _id }) => {
-      return await Flashcard.findById(_id).populate("createdBy");
+      return await Flashcard.findById(_id).populate("createdBy", null, null, {strictPopulate:false});
     },
     user: async (parent, args, context) => {
       if (context.user) {
