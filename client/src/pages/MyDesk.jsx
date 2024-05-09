@@ -11,7 +11,7 @@ export default function MyDesk() {
             borderWidth: '6px'
         }
     }
-    const jobStyle = {
+    const buttonStyle = {
         ':hover': {
             bg: 'brand.500',
             color: 'brand.900'
@@ -19,7 +19,7 @@ export default function MyDesk() {
     }
     return (
         <Flex bg="brand.800" flexFlow="column wrap" alignItems="center" textAlign="center" w="100%" h="100vh" borderRadius="0 0 10px 10px">               
-            <Heading as="h2" color="brand.500" m="3" fontSize="38px" fontWeight="400">
+            <Heading as="h2" color="brand.700" m="3" fontSize="38px" fontWeight="400">
                     My Desk
             </Heading>
                 <Link href="/flashcards" sx={linkStyle}>
@@ -30,8 +30,8 @@ export default function MyDesk() {
                 </Box>
             </Link>
             <Link href="/jobs" sx={linkStyle}>
-                <Box sx={jobStyle} mt="10" fontSize="22px" fontWeight="400" color="brand.900" bg="brand.600" w="150px" border="solid 4px black" borderRadius="10px" padding="6px">
-                    Jobs List
+            <Box sx={buttonStyle} alignSelf="center" mt="10" fontSize="22px" fontWeight="400" color="brand.900" bg="brand.700" borderRadius="10px" maxW="100%" padding="8px">
+                    Go to Jobs List
                 </Box>
             </Link>
         </Flex>

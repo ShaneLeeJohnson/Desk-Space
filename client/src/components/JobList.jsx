@@ -5,19 +5,7 @@ import { Form } from 'react-router-dom'
 
 // Setting up job list properties for user inputs
 export default function JobList() {
-    const inputStyle = {
-        textAlign: 'center',
-        bg: 'white',
-        w:'50%',
-        m: '2',
-        borderRadius:'10px'
-    }
-    const buttonHover = {
-        ':hover': {
-            bg: 'brand.500',
-            color: 'brand.800'
-        }
-    }
+
 const [newJobList, setNewJobList] = useState([]);
 const inputTitle = useRef();
 const inputLink = useRef();
@@ -50,19 +38,33 @@ let addToList = e => {
     inputContact.current.value='';
 };
 
+const inputStyle = {
+    textAlign: 'center',
+    bg: 'white',
+    w:'50%',
+    m: '2',
+    borderRadius:'10px'
+}
+const buttonHover = {
+    ':hover': {
+        bg: 'brand.600',
+        color: 'brand.800'
+    }
+}
+
 return (
     <Flex bg="brand.800" flexFlow="column wrap" alignItems="center" textAlign="center" w="100%" h="100vh" borderRadius="0 0 10px 10px">
-        <Box display="inline-block" mb="3">
+        <Box mb="3">
         <Heading as="h3" fontSize="34px" fontWeight="300" color="white" mb="4">Jobs List</Heading>
         <Box>
-            <Text color="white" fontSize="20px" m="1" fontWeight="400" >Add Job Info</Text>
+            <Text color="brand.700" fontSize="20px" m="1" fontWeight="400">Add Job Info</Text>
             <Form method="post" action="/create" onSubmit={addToList}>
             <FormControl borderRadius="10px" bg="brand.500" p="3">
                 <Input placeholder="Company name/Job title" ref={inputTitle} type="text" name="title" sx={inputStyle}/>
                 <Input placeholder="Link to website/job listing (if any)" ref={inputLink} type="text" name="link" sx={inputStyle}/>
                 <Input placeholder="Company contact info" ref={inputContact} type="text" name="contact" sx={inputStyle}/>
             </FormControl>
-            <Button type="submit" m="2" sx={buttonHover}>Save</Button>
+            <Button type="submit" m="2" bg="brand.700" sx={buttonHover}>Save</Button>
             </Form>
         </Box>
         <ul>
@@ -78,7 +80,7 @@ return (
                 {item.jobContact} 
                 </li>
             </Box>
-            </Box>
+        </Box>
             </>
                 ))}
             </ul>

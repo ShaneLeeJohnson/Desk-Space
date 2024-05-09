@@ -21,10 +21,9 @@ function Navbar() {
 
   const linkStyle = {
     ':hover': {
-      color: 'black'
+      fontWeight: '500'
     }
   }
-
   return (
     <Flex
       direction="row"

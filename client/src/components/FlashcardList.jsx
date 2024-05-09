@@ -6,7 +6,7 @@ export default function FlashcardList({ flashcards }) {
     console.log(flashcards)
     const buttonStyle = {
         ':hover': {
-            bg: 'brand.500',
+            bg: 'brand.600',
             color: 'brand.900',
             border: 'solid 4px black'
         }
@@ -23,7 +23,7 @@ export default function FlashcardList({ flashcards }) {
             {flashcards && flashcards.length > 0 && (
                 <Box color="brand.600">
                     <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
-                    <Button sx={buttonStyle} onClick={nextCard} mb="10" mt="2" p="4" color="brand.900" bg="brand.600" border="solid 4px black">Next</Button>
+                    <Button sx={buttonStyle} onClick={nextCard} mb="10" mt="2" p="4" color="brand.900" bg="brand.700" border="solid 4px black">Next</Button>
                 </Box>
             )}
         </Flex>
