@@ -1,5 +1,7 @@
 import { useState } from "react";
 import {
+  Flex,
+  Heading,
   Box,
   Button,
   FormControl,
@@ -46,11 +48,18 @@ const LoginForm = () => {
       password: "",
     });
   };
-
+  
+  const buttonStyle = {
+    ':hover': {
+        opacity: 0.99
+    }
+}
   return (
     <>
-      <Box p={4} maxW="md" mx="auto">
-                  <form onSubmit={handleFormSubmit}>
+    <Flex justifyContent="center" bg="brand.800" w="100%" h="100vh" borderRadius="0 0 10px 10px">
+      <Box p={4} bg="white" h="60%" minW="35%" mt="5" borderRadius="10px">
+      <Heading fontSize="28px" fontWeight="400" textAlign="left" mb="4">Login</Heading>
+              <form onSubmit={handleFormSubmit}>
             <Stack spacing={4}>
               <FormControl id="username">
                 <FormLabel>Username</FormLabel>
@@ -60,7 +69,7 @@ const LoginForm = () => {
                   value={formData.username}
                   onChange={handleInputChange}
                   placeholder="Please Enter User Name"
-                  borderColor="darkgray"
+                  borderColor="gray"
                   borderWidth="2px"
                 />
               </FormControl>
@@ -72,18 +81,18 @@ const LoginForm = () => {
                   value={formData.password}
                   onChange={handleInputChange}
                   placeholder="Please Enter Password"
-                  borderColor="darkgray"
+                  borderColor="gray"
                   borderWidth="2px"
                 />
               </FormControl>
-              <Button type="submit" colorScheme="blue" isLoading={loading}>
-                {loading ? <Spinner size="sm" color="white" /> : "Login"}
+              <Button type="submit"  sx={buttonStyle} bg="brand.500" w="45%" border="solid 2px gray" mt="2" isLoading={loading}>
+                {loading ? <Spinner size="sm" color="gray" /> : "Login"}
               </Button>{" "}
               {error && <Text color="red">Error: {error.message}</Text>}
             </Stack>
           </form>
-        
       </Box>
+      </Flex>
     </>
   );
 };
