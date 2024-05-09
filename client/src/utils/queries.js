@@ -1,4 +1,4 @@
-import {gql} from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const GET_USER = gql`
 query user {
@@ -11,5 +11,14 @@ query user {
         answer
         question
       }
+    }
+  }`;
+
+export const GET_FLASHCARDS = gql`
+  query Flashcards {
+    flashcards {
+      _id
+      question
+      answer
     }
   }`;

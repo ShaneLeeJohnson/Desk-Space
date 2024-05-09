@@ -47,7 +47,7 @@ function Navbar() {
               <Stack spacing={6} align="left">
                 {/* <Link href='/home' mx={3} my={3} fontFamily='Nunito' fontWeight='bold'>Home</Link> */}
                 <Link
-                  to="/mydesk"
+                  href="/mydesk"
                   mx={3}
                   my={3}
                   fontFamily="Nunito"
@@ -55,8 +55,12 @@ function Navbar() {
                 >
                   My Desk
                 </Link>
+                {Auth.loggedIn() ? (
+                    <Link mx={3} my={3} fontFamily='Nunito' fontWeight='bold' onClick={()=>Auth.logout()}>
+                        Logout
+                    </Link>) : ( <>
                 <Link
-                  to="/login"
+                  href="/login"
                   mx={3}
                   my={3}
                   fontFamily="Nunito"
@@ -65,14 +69,14 @@ function Navbar() {
                   Log In
                 </Link>
                 <Link
-                  to="/signup"
+                  href="/signup"
                   mx={3}
                   my={3}
                   fontFamily="Nunito"
                   fontWeight="bold"
                 >
                   Sign Up
-                </Link>
+                </Link></>)}
               </Stack>
             </Box>
           )}
