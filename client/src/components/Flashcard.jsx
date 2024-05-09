@@ -34,7 +34,7 @@ export default function Flashcard({flashcard}) {
                         {isFlipped ? flashcard.answer : flashcard.question}
                     </Heading>
                     {!isFlipped && (
-                        <Text fontSize='lg' color='black' fontWeight='bold' textAlign='center' mt='2'>Click to reveal the answer</Text>
+                        <Text fontSize='lg' color='black' fontWeight='bold' textAlign='center' mt='2'>{flashcard.question}</Text>
                     )}
                 </Box>
             </animated.div>

@@ -41,28 +41,32 @@ export default function FlashcardList({ flashcards }) {
             });
             // Clear input fields after adding the card
             setFormData({ question: "", answer: "" }); 
-            alert('Card added successfully')
+            alert('Card added successfully!')
         } catch (error) {
             console.error(error);
         }
     };
 
     const handleDeleteCard = async (flashcard) => {
-        const cardId = flashcard._id; // Extract _id from flashcard object
+        const cardId = flashcard._id;
         try {
+            // Remove the flashcard from the client-side array
+            const updatedFlashcards = flashcards.filter(flashcard => flashcard._id !== cardId);
+            setCurrentCardIndex(Math.min(currentCardIndex, updatedFlashcards.length - 1));
+    
+            // Update the user's list of flashcards in the database
             await removeCard({
                 variables: {
                     _id: cardId,
                 },
-                refetchQueries: [{ query: GET_FLASHCARDS }],
+                refetchQueries: [{ query: GET_FLASHCARDS }, { query: GET_USER }],
             });
             alert('Card deleted successfully');
-            [currentCardIndex + 1]
         } catch (error) {
             console.error('Error deleting card:', error.message);
             alert('Failed to delete card. Please try again.');
         }
-}
+    };
 
       // update state based on form input changes
 const handleInputChange = (event) => {
@@ -87,19 +91,19 @@ const handleInputChange = (event) => {
     return (
         // Shows a flashcard to the user with a "next" button and buttons to edit/delete flashcards
         <>
-        <Flex bg="brand.900" flexFlow="column wrap" justifyContent="center" textAlign="center" h="75vh">
+        <Flex bg="brand.900" flexFlow="column wrap" alignItems="center" textAlign="center">
             {flashcards && flashcards.length > 0 && (
                 <Box color="brand.600">
-                    <Button sx={buttonStyle} onClick={nextCard} p="4" mb="2" color="brand.900" bg="brand.500" border="solid 4px black">Next</Button>
+                    <Button sx={buttonStyle} onClick={nextCard} p="4" m="2" color="brand.900" bg="brand.500" border="solid 4px black">Next</Button>
                     <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
                     <Button p="2" m="2" color="brand.900" bg="brand.700" border="solid 4px black">Edit Card</Button>
                     <Button onClick={()=>{handleDeleteCard(flashcards[currentCardIndex])}} p="2" m="2" bg="red.400" border="solid 4px black">Delete Card</Button>
                 </Box>
             )}
         </Flex>
-        <Flex flexFlow="column wrap" alignItems="center" textAlign="center">
-        <Heading fontSize="26px" fontWeight="400" color="brand.600">Create New Flashcard</Heading>
-            <Box mb="20" p="2" bg="brand.500" borderRadius="10px">
+        <Flex flexFlow="column wrap" alignItems="center" textAlign="center" h="50vh">
+        <Heading fontSize="26px" fontWeight="400" color="brand.600" mt="6" mb="2">Create A Flashcard</Heading>
+            <Box p="2" bg="brand.500" borderRadius="10px" maxW="75%">
         <form onSubmit={handleAddCard}>
             <FormControl>
                 <Input ref={inputQuestion} 
@@ -119,7 +123,7 @@ const handleInputChange = (event) => {
                 onChange={handleInputChange}
                 bg="white"
                 color="brand.900"/>
-            <Button type="submit" m="2" bg="brand.700">Add Card</Button>
+            <Button type="submit" m="2" bg="brand.600" border="solid 3px gray">Add Card</Button>
         </FormControl>
         </form>
             </Box>
