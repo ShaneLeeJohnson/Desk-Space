@@ -3,7 +3,7 @@ import {FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest, 
 
 const Footer = () => {
     return (
-        <Box as='footer' color='black' p="2" h='60px' bottom="0" width="100%">
+        <Box as='footer' color='black' bg="white" p="3" h='60px' position="fixed" bottom="0" width="100%">
             <Flex justify='space-between' align='center' direction={['column', 'row']}>
                 <Text fontSize='lg' fontWeight='bold' fontFamily='Nunito'>© 2024 DeskSpace. All Rights Reserved.</Text>
                 <Flex mt={[4, 0]} flexWrap='wrap'>
