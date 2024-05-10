@@ -1,5 +1,9 @@
 import { Flex, Box, FormControl, 
-    Text, Heading, Input, Button, } from '@chakra-ui/react';
+        Text, Heading, Input, 
+        Button, Card, CardHeader, 
+        CardBody, Link, ListItem,
+        UnorderedList, IconButton } from '@chakra-ui/react';
+import { DeleteIcon, AddIcon } from '@chakra-ui/icons'
 import { useState, useEffect, useRef } from 'react'
 import { Form } from 'react-router-dom'
 
@@ -47,44 +51,51 @@ const inputStyle = {
 }
 const buttonHover = {
     ':hover': {
-        bg: 'brand.600',
+        bg: 'brand.700',
         color: 'brand.800'
     }
+};
+
+const deleteItem = index => {
+    const updatedList = [...newJobList];
+    updatedList.splice(index, 1);
+    setNewJobList(updatedList);
 }
 
 return (
-    <Flex bg="brand.800" flexFlow="column wrap" alignItems="center" textAlign="center" w="100%" h="100vh" borderRadius="0 0 10px 10px">
-        <Box mb="3">
-        <Heading as="h3" fontSize="34px" fontWeight="300" color="white" mb="4">Jobs List</Heading>
+    <Flex bg="brand.800" flexDirection="column" alignItems="center" textAlign="center" w="100%" h="100vh" borderRadius="0 0 10px 10px">
+                <Heading as="h3" fontSize="34px" fontWeight="300" color="white" mb="4">Job Info List</Heading>
+    <Flex flexDirection="row" flexFlow="row wrap" alignItems="center" justifyContent="center" mb="6">
+            {newJobList.map((item, index) => (
+        <Box key={index}> 
+            <Card textAlign="center" m="2">
+                <CardHeader as="h4" fontSize="20" fontWeight="600">
+                    {index + 1}. {item.jobTitle}
+                </CardHeader>
+                <UnorderedList listStyleType="none" mb="2" fontSize="18px">
+                    <ListItem>
+                        <Link href ={item.jobLink} textDecoration="underline">{item.jobLink}</Link>
+                    </ListItem>
+                    <ListItem>
+                        {item.jobContact} 
+                    </ListItem>
+                </UnorderedList>
+            <IconButton onClick={() => deleteItem(index)} bg="red.400"><DeleteIcon /></IconButton>
+        </Card>
+        </Box>
+                ))}
+        </Flex>
         <Box>
-            <Text color="brand.700" fontSize="20px" m="1" fontWeight="400">Add Job Info</Text>
+            <Text color="brand.600" fontSize="24px" m="1" fontWeight="400">Add Job Info</Text>
             <Form method="post" action="/create" onSubmit={addToList}>
             <FormControl borderRadius="10px" bg="brand.500" p="3">
                 <Input placeholder="Company name/Job title" ref={inputTitle} type="text" name="title" sx={inputStyle}/>
                 <Input placeholder="Link to website/job listing (if any)" ref={inputLink} type="text" name="link" sx={inputStyle}/>
                 <Input placeholder="Company contact info" ref={inputContact} type="text" name="contact" sx={inputStyle}/>
             </FormControl>
-            <Button type="submit" m="2" bg="brand.700" sx={buttonHover}>Save</Button>
+            <Button type="submit" m="2" bg="brand.600" sx={buttonHover}><AddIcon/></Button>
             </Form>
         </Box>
-        <ul>
-            {newJobList.map((item, index) => (
-            <>
-        <Box listStyleType="none" textAlign="center">
-            <Heading as="h4" fontSize="20" fontWeight="500">{index + 1}.{item.jobTitle}</Heading>
-            <Box fontSize="16.5px" >
-                <li key={index}>
-                    <a href ={item.jobLink}>{item.jobLink}</a>
-                </li>
-                <li>
-                {item.jobContact} 
-                </li>
-            </Box>
-        </Box>
-            </>
-                ))}
-            </ul>
-        </Box>
-    </Flex>
+        </Flex>
 )
 }
