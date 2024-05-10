@@ -3,8 +3,11 @@ const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    flashcards: async () => {
-      return await Flashcard.find();
+    flashcards: async (parent, args, context) => {
+      console.log(context.user)
+      if (context.user) {
+        return await User.find({_id:context.user._id}).populate('flashcards');
+      } throw AuthenticationError;
     },
     flashcard: async (parent, { _id }) => {
       return await Flashcard.findById(_id).populate("createdBy", null, null, {strictPopulate:false});
@@ -33,7 +36,7 @@ const resolvers = {
     },
     addCard: async (parent, args, context) => {
       if (context.user) {
-        const flashCard = await Flashcard.create({...args, createdBy: context.user._id});
+        const flashCard = await Flashcard.create({...args});
 
         const user = await User.findByIdAndUpdate(
           context.user._id,

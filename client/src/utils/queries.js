@@ -15,10 +15,13 @@ query user {
   }`;
 
 export const GET_FLASHCARDS = gql`
-  query Flashcards {
+query Flashcards {
+  flashcards {
+    username
     flashcards {
       _id
       question
       answer
     }
-  }`;
+  }
+}`;
