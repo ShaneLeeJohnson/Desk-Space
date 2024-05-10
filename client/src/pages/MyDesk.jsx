@@ -32,7 +32,7 @@ export default function MyDesk() {
             <Link href="/jobs" sx={linkStyle}>
             <Box sx={buttonStyle} alignSelf="center" mt="10" fontSize="22px" fontWeight="400" color="brand.900" bg="brand.700" borderRadius="10px" maxW="100%" padding="8px">
                     Go to Jobs List
-                </Box>
+            </Box>
             </Link>
         </Flex>
     )
