@@ -12,7 +12,7 @@ export default function InterviewPrep() {
     useEffect(() => {
         if (data) {
             console.log("data", data)
-            setFlashcards(data.flashcards);
+            setFlashcards(data.flashcards[0].flashcards);
         }
     }, [data]);
     return ( 

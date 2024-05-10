@@ -18,7 +18,7 @@ const typeDefs = `
     }
     
     type Query {
-        flashcards: [Flashcard!]!
+        flashcards: [User]
         flashcard(_id: ID!): Flashcard
         user: User
         users: [User]
