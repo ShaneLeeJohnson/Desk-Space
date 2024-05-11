@@ -13,24 +13,12 @@ export default function FlashcardList({ flashcards }) {
         setEditingCardId (flashcardId);
     };
     const handleSaveEdit = async (flashcardId, editedContent) => {
-    //     const {question, answer} = editedContent;
-    //     try {
-    //         await updateCard ({
-    //             variables: {_id: flashcardId, question: question, answer: answer,},
-    //         refetchQueries: [{query: GET_FLASHCARDS}]
-    //     }); console.log('Flashcard Updated');
-    //     }catch (error) {
-    //         console.error ('Flashcard NOT Updated:', error);
-    //     } finally {
-    //         setEditingCardId (null);
-    //     }
-    // };
         try {
             const { question, answer } = editedContent;
             await updateCard({
                 variables: {
                     _id: flashcardId,
-                    question: question || "", // Provide default values if question or answer is undefined
+                    question: question || "",
                     answer: answer || "",
                 },
                 refetchQueries: [{ query: GET_FLASHCARDS }],
