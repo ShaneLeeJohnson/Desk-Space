@@ -43,19 +43,22 @@ const deleteItem = index => {
 const inputStyle = {
     textAlign: 'center',
     bg: 'white',
-    w:'50%',
-    m: '2',
+    w:'80%',
+    mt: '20',
     borderRadius:'10px'
 }
-const buttonHover = {
+const buttonStyle = {
+    borderColor: 'brand.500',
     ':hover': {
-        bg: 'brand.500'
+        bg: 'brand.500',
+        borderColor: 'brand.600'
     }
 };
 
+
 return (
     <Flex bg="brand.800" flexDirection="column" alignItems="center" textAlign="center" w="100%" h="100%" borderRadius="0 0 10px 10px">
-        <Heading as="h3" fontSize="34px" fontWeight="300" color="white" m="3">My Sticky Notes</Heading>
+        <Heading as="h3" fontSize="34px" fontWeight="300" color="brand.500" m="3">My Sticky Notes</Heading>
         <Flex flexDirection="row" flexFlow="row wrap" alignItems="center" justifyContent="center" mb="6">
             {newNotesList.map((item, index) => (
             <Box key={index} alignItems="center"> 
@@ -63,20 +66,20 @@ return (
                     <CardBody fontSize="18px" fontWeight="600">
                         {index + 1}. {item.input}
                     </CardBody>
-                <IconButton onClick={() => deleteItem(index)} border="solid 2px black">
+                <IconButton onClick={() => deleteItem(index)} border="solid 1px black">
                     <DeleteIcon />
                 </IconButton>
                 </Card>
             </Box>
                 ))}
         </Flex>
-        <Flex flexFlow="column wrap" alignItems="center" maxW="275px" mb="2" h="60vh">
+        <Flex flexFlow="column wrap" alignItems="center" w="250px" maxW="90%" mb="2" h="80vh">
             <Box>
                 <Form method="post" action="/create" onSubmit={addToList}>
-                <FormControl borderRadius="10px" bg="brand.700" p="10" h="220px" boxShadow="3px 3px 3px 3px black">
-                    <Input placeholder="new note" ref={input} type="text" name="title" sx={inputStyle}/>
+                <FormControl borderRadius="10px" bg="brand.700" h="200px" boxShadow="2px 2px 1px 2px black">
+                    <Input placeholder="add note" ref={input} type="text" name="title" sx={inputStyle}/>
                 </FormControl>
-                    <Button type="submit" m="3" bg="brand.600" sx={buttonHover} border="solid 3px black"><AddIcon/></Button>
+                    <Button type="submit" m="5" bg="brand.600" sx={buttonStyle} border="solid 3px"><AddIcon/></Button>
                 </Form>
             </Box>
         </Flex>

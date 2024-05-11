@@ -23,11 +23,11 @@ export default function Home() {
                 {!isLoggedIn &&
                 <Flex flexDirection="column" wrap="column wrap" justify='center' align='center' h="100%">
                     <Box fontSize="24px" fontWeight="350" color="white" textAlign="center" mt="2" mb="5">
-                        <Link>
+                        <Link to='/signup'>
                             <Text color="brand.500" sx={linkStyle}>Sign Up</Text>
                         </Link> 
                         <Text>or</Text>
-                        <Link color="brand.500">
+                        <Link to='/login' color="brand.500">
                             <Text color="brand.500" sx={linkStyle}>Login</Text>
                         </Link> 
                         <Text>to continue</Text>
