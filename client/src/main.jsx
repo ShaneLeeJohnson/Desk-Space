@@ -3,11 +3,11 @@ import App from './App.jsx'
 
 import Home from './pages/Home'
 import MyDesk from './pages/MyDesk'
-import InterviewPrep from './components/InterviewPrep'
+import FlashcardPage from './components/FlashcardPage.jsx'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Flashcard from "./components/Flashcard"
-import JobList from './components/JobList'
+import StickyNotes from './components/StickyNotes.jsx'
 
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
@@ -16,6 +16,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import './index.css'
 import EditFlashcard from './components/EditFlashcard.jsx'
 
+// Router to handle paths to our components/pages
 const router = createBrowserRouter([
   {
     path: '/', 
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       }, 
       {
         path: 'flashcards', 
-        element: <InterviewPrep />
+        element: <FlashcardPage />
       },
       {
         path: 'flashcard', 
@@ -50,14 +51,14 @@ const router = createBrowserRouter([
         element: <Signup />
       },
       {
-        path: 'jobs', 
-        element: <JobList />
+        path: 'notes', 
+        element: <StickyNotes />
       }
     ]
   }
 ])
 
-
+// Setting Chakra theme colors
 const colors = {
   brand: {
     900: '#2D3748', // darkest gray
@@ -73,6 +74,6 @@ const colors = {
 const theme = extendTheme({ colors })
 ReactDOM.createRoot(document.getElementById('root')).render(
     <ChakraProvider theme={theme}>
-     <RouterProvider router={router}/>
+      <RouterProvider router={router}/>
     </ChakraProvider>
 )
