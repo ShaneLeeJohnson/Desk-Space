@@ -5,7 +5,8 @@ import FlashcardList from './FlashcardList'
 import { GET_FLASHCARDS } from '../utils/queries';
 import '../App.css'
 
-export default function InterviewPrep() {
+// Function to get flashcards and display them on the page
+export default function FlashcardPage() {
     const { loading, error, data } = useQuery(GET_FLASHCARDS);
     const [flashcards, setFlashcards] = useState([]);
 
@@ -18,12 +19,11 @@ export default function InterviewPrep() {
     return ( 
         <>
     <Flex flexFlow="column wrap" justifyContent="center" textAlign="center" bg="brand.900" color="brand.600">
-        <Box bg="black">
-            <Heading fontWeight="600">Interview Prep Flashcards</Heading>
-            <Heading fontSize="22px" fontWeight="350" m="2">(Click on flashcard to flip it)</Heading>
+        <Box>
+            <Heading fontWeight="300" fontSize="32px" mb="3">My Flashcards</Heading>
         </Box>
             <FlashcardList flashcards={flashcards}/>
-        </Flex>
+    </Flex>
         </>
     );
 }
