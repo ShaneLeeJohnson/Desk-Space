@@ -14,6 +14,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 // Import Chakra
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import './index.css'
+import EditFlashcard from './components/EditFlashcard.jsx'
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'flashcard', 
         element: <Flashcard />
+      },
+      {
+        path: 'edit/:id', 
+        element: <EditFlashcard />
       },
       {
         path: 'login', 

@@ -25,3 +25,12 @@ query Flashcards {
     }
   }
 }`;
+
+export const GET_SINGLE_FLASHCARD = gql`
+query flashcard($id: ID!) {
+  flashcard(_id: $id) {
+    answer
+    question
+  }
+}
+`;

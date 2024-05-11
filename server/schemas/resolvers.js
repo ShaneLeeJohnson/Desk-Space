@@ -67,13 +67,13 @@ const resolvers = {
 
     updateCard: async (parent, args) => {
       try {
-        const { _id, question, answer } = args;
-        if (!question || !answer) {
-          throw new Error("Both question and answer are required for updating the card.");
-        }
+     
+        // if (!question || !answer) {
+        //   throw new Error("Both question and answer are required for updating the card.");
+        // }
         const updatedFlashcard = await Flashcard.findByIdAndUpdate(
-          _id,
-          { question, answer },
+          args._id,
+          { $set: args},
           { new: true }
         );
         return updatedFlashcard;
