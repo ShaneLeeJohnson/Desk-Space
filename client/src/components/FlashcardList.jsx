@@ -1,4 +1,5 @@
-import { Flex, Box, Button, FormControl, Input, Heading } from '@chakra-ui/react';
+import { Flex, Box, FormControl, Input, Heading, IconButton } from '@chakra-ui/react';
+import { DeleteIcon, AddIcon, EditIcon, ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons';
 import { useState, useRef } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_USER, GET_FLASHCARDS } from '../utils/queries';
@@ -89,59 +90,66 @@ const handleInputChange = (event) => {
     });
 };
 
-    const buttonStyle = {
-        ':hover': {
-            bg: 'brand.600',
-            color: 'brand.900',
-            border: 'solid 4px black'
-        }
+const buttonStyle = {
+    ':hover': {
+        bg: 'white'
     }
-    return (
-        <>
-        <Flex bg="brand.900" flexFlow="column wrap" alignItems="center" textAlign="center">
-            {flashcards && flashcards.length > 0 ? (
-                <Box color="brand.600">
-                    <Button sx={buttonStyle} onClick={prevCard} p="4" m="2" color="brand.900" bg="brand.500" border="solid 4px black">Previous</Button>
-                    <Button sx={buttonStyle} onClick={nextCard} p="4" m="2" color="brand.900" bg="brand.500" border="solid 4px black">Next</Button>
-                            <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
-                            <Button
-                             p="2" m="2" color="brand.900" bg="brand.700" border="solid 4px black"><Link to={`/edit/${flashcards[currentCardIndex]._id}`}>Edit Card</Link></Button>
-                            <Button onClick={() => handleDeleteCard(flashcards[currentCardIndex])} p="2" m="2" bg="red.400" border="solid 4px black">Delete Card</Button>
-                        
-                </Box>
-            ) : (
-                <Box color='brand.600' bg='pink.300' p='4' borderRadius='lg' boxShadow='lg' mt='10'>
-                    <Heading fontSize='24px' color='white' p='4'>My Flashcard Deck is Empty</Heading>
-                </Box>
-            )}
-        </Flex>
-        <Flex flexFlow="column wrap" alignItems="center" textAlign="center" h="50vh">
-        <Heading fontSize="26px" fontWeight="400" color="brand.600" mt="6" mb="2">Create A Flashcard</Heading>
-            <Box p="2" bg="brand.500" borderRadius="10px" maxW="75%">
-        <form onSubmit={handleAddCard}>
-            <FormControl>
-                <Input ref={inputQuestion} 
-                placeholder="Enter question" 
-                type="text" 
-                name="question" 
-                value={formData.question} 
-                onChange={handleInputChange}
-                bg="white"
-                color="brand.900"/>
-
-                <Input ref={inputAnswer} 
-                placeholder="Enter answer"
-                type="text" 
-                name="answer"
-                value={formData.answer}
-                onChange={handleInputChange}
-                bg="white"
-                color="brand.900"/>
-            <Button type="submit" m="2" bg="brand.600" border="solid 3px gray">Add Card</Button>
-        </FormControl>
-        </form>
+}
+return (
+    <>
+    <Flex bg="brand.900" flexFlow="column wrap" alignItems="center" textAlign="center" h="100%">
+        {flashcards && flashcards.length===0 && (
+            <Box fontSize="24px" m="5" color="brand.700">Your flashcard deck is empty!</Box>
+        )}
+        {flashcards && flashcards.length > 0 && (
+            <Flex>
+            <Box color="brand.600">
+                <IconButton onClick={prevCard} sx={buttonStyle} p="4" m="2" color="brand.900" bg="brand.500">
+                    <ArrowBackIcon />
+                </IconButton>
+                <IconButton  onClick={nextCard}sx={buttonStyle}  p="4" m="2" color="brand.900" bg="brand.500">
+                    <ArrowForwardIcon />
+                </IconButton>
+            <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
+                <IconButton p="2" m="2" color="brand.900" bg="brand.700">
+                    <Link to={`/edit/${flashcards[currentCardIndex]._id}`}>
+                        <EditIcon />
+                    </Link>
+                </IconButton>
+                <IconButton onClick={() => handleDeleteCard(flashcards[currentCardIndex])} p="2" m="2" bg="red.400">
+                    <DeleteIcon />
+                </IconButton>
             </Box>
-        </Flex>
-        </>
-        )
-    }
+            </Flex>
+        )}
+    <Flex flexFlow="column wrap" alignItems="center" textAlign="center" h="75vh">
+    <Heading fontSize="24px" fontWeight="300" color="brand.600" mt="6" mb="4">Create A Flashcard</Heading>
+        <Box p="2" bg="brand.500" borderRadius="10px" maxW="75%">
+    <form onSubmit={handleAddCard}>
+        <FormControl>
+            <Input ref={inputQuestion} 
+            placeholder="Enter question" 
+            type="text" 
+            name="question" 
+            value={formData.question} 
+            onChange={handleInputChange}
+            bg="white"
+            color="brand.900"/>
+
+            <Input ref={inputAnswer} 
+            placeholder="Enter answer"
+            type="text" 
+            name="answer"
+            value={formData.answer}
+            onChange={handleInputChange}
+            bg="white"
+            color="brand.900"/>
+        <IconButton type="submit" m="2" bg="brand.600" border="solid 3px gray"><AddIcon /></IconButton>
+    </FormControl>
+    </form>
+        </Box>
+    </Flex>
+</Flex>
+    </>
+    )
+}

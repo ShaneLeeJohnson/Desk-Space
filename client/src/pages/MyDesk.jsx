@@ -28,14 +28,14 @@ export default function MyDesk() {
                     My Desk
             </Heading>
             {randomQuote && (
-                <Text fontSize='24px' fontFamily="" fontWeight='300' color='white'>
+                <Text fontSize='26px' fontFamily="" fontWeight='300' color='white'>
                     "{randomQuote.quote}"
                 </Text>
             )}
                 <Link href="/flashcards" sx={linkStyle} maxW="90%" minW="30%">
             <Box display="flex" sx={buttonStyle} justifyContent="center" alignSelf="center" bg="brand.600" border="solid 2px black" borderRadius="8px" boxShadow="3px 3px 3px 3px black" maxW="100%" maxH="100%" minH="230px" mt="4">
                 <Heading fontSize="26px" fontWeight="500" alignSelf="center" p="4">
-                    My Flashcards Deck
+                    My Flashcard Deck
                 </Heading>
                 </Box>
             </Link>
