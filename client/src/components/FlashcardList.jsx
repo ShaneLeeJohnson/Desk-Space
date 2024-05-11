@@ -2,10 +2,34 @@ import { Flex, Box, Button, FormControl, Input, Heading } from '@chakra-ui/react
 import { useState, useRef } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_USER, GET_FLASHCARDS } from '../utils/queries';
-import { ADD_CARD, REMOVE_CARD } from '../utils/mutations';
+import { ADD_CARD, REMOVE_CARD, UPDATE_CARD } from '../utils/mutations';
 import Flashcard from './Flashcard';
+import EditFlashcard from './EditFlashcard';
 
 export default function FlashcardList({ flashcards }) {
+    const [updateCard] = useMutation (UPDATE_CARD);
+    const [editingCardId, setEditingCardId] = useState (null);
+    const handleEdit = (flashcardId) => {
+        setEditingCardId (flashcardId);
+    };
+    const handleSaveEdit = async (flashcardId, editedContent) => {
+        try {
+            const { question, answer } = editedContent;
+            await updateCard({
+                variables: {
+                    _id: flashcardId,
+                    question: question || "",
+                    answer: answer || "",
+                },
+                refetchQueries: [{ query: GET_FLASHCARDS }],
+            });
+            console.log('Flashcard Updated');
+        } catch (error) {
+            console.error('Flashcard NOT Updated:', error);
+        } finally {
+            setEditingCardId(null);
+        }
+    };
     console.log(flashcards);
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const nextCard = () => {
@@ -95,9 +119,16 @@ const handleInputChange = (event) => {
             {flashcards && flashcards.length > 0 && (
                 <Box color="brand.600">
                     <Button sx={buttonStyle} onClick={nextCard} p="4" m="2" color="brand.900" bg="brand.500" border="solid 4px black">Next</Button>
-                    <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
-                    <Button p="2" m="2" color="brand.900" bg="brand.700" border="solid 4px black">Edit Card</Button>
-                    <Button onClick={()=>{handleDeleteCard(flashcards[currentCardIndex])}} p="2" m="2" bg="red.400" border="solid 4px black">Delete Card</Button>
+                    {editingCardId !== null ? (
+                        <EditFlashcard flashcard={flashcards.find(card => card._id === editingCardId)}
+                        onSave={(editedContent) => handleSaveEdit (editingCardId, editedContent)}/>
+                    ) : (
+                        <>
+                            <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
+                            <Button onClick={() => handleEdit(flashcards[currentCardIndex]._id)} p="2" m="2" color="brand.900" bg="brand.700" border="solid 4px black">Edit Card</Button>
+                            <Button onClick={() => handleDeleteCard(flashcards[currentCardIndex])} p="2" m="2" bg="red.400" border="solid 4px black">Delete Card</Button>
+                        </>
+                    )}
                 </Box>
             )}
         </Flex>

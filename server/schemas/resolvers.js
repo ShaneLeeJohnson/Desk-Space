@@ -64,14 +64,25 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+
     updateCard: async (parent, args) => {
-      // missing the update content
-      return await Flashcard.findByIdAndUpdate(
-        args._id,
-        { $set: { ...args } },
-        { new: true }
-      );
+      try {
+        const { _id, question, answer } = args;
+        if (!question || !answer) {
+          throw new Error("Both question and answer are required for updating the card.");
+        }
+        const updatedFlashcard = await Flashcard.findByIdAndUpdate(
+          _id,
+          { question, answer },
+          { new: true }
+        );
+        return updatedFlashcard;
+      } catch (error) {
+        console.error("Error updating flashcard:", error);
+        throw new Error("Failed to update the flashcard. Please try again.");
+      }
     },
+    
     removeCard: async (parent, { _id }) => {
       return Flashcard.findOneAndDelete({ _id });
     },

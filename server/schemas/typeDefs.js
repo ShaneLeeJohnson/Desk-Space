@@ -28,7 +28,7 @@ const typeDefs = `
         addUser(username: String!, email: String!, password: String!): AuthPayload!
         addCard(question: String!, answer: String!): User
         updateUser(username: String!, email: String!): User
-        updateCard(_id: ID!, question: String, answer: String): Flashcard
+        updateCard(_id: ID!, question: String, answer: String): User
         removeCard(_id: ID!): Flashcard
         login(username: String!, password: String!): AuthPayload!
     }
