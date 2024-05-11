@@ -12,6 +12,15 @@ export default function FlashcardList({ flashcards }) {
     const nextCard = () => {
         setCurrentCardIndex((prevIndex) => (prevIndex + 1) % flashcards.length);
     }
+    const prevCard = () => {
+        setCurrentCardIndex ((prevIndex) => {
+            if (prevIndex === 0) {
+                return flashcards.length - 1;
+            } else {
+                return prevIndex - 1;
+            }
+        });
+    };
 
     // Setting variables to store our queries and mutations
     const [getUser] = [useQuery(GET_USER)];
@@ -53,15 +62,17 @@ export default function FlashcardList({ flashcards }) {
         try {
             // Remove the flashcard from the client-side array
             const updatedFlashcards = flashcards.filter(flashcard => flashcard._id !== cardId);
-            setCurrentCardIndex(Math.min(currentCardIndex, updatedFlashcards.length - 1));
-    
-            // Update the user's list of flashcards in the database
             await removeCard({
                 variables: {
                     _id: cardId,
                 },
                 refetchQueries: [{ query: GET_FLASHCARDS }, { query: GET_USER }],
             });
+            if (updatedFlashcards.length === 0) {
+                setCurrentCardIndex (0);
+            } else {
+                setCurrentCardIndex (Math.min(currentCardIndex, updatedFlashcards.length -1));
+            }
             alert('Card deleted successfully');
         } catch (error) {
             console.error('Error deleting card:', error.message);
@@ -88,15 +99,19 @@ const handleInputChange = (event) => {
     return (
         <>
         <Flex bg="brand.900" flexFlow="column wrap" alignItems="center" textAlign="center">
-            {flashcards && flashcards.length > 0 && (
+            {flashcards && flashcards.length > 0 ? (
                 <Box color="brand.600">
+                    <Button sx={buttonStyle} onClick={prevCard} p="4" m="2" color="brand.900" bg="brand.500" border="solid 4px black">Previous</Button>
                     <Button sx={buttonStyle} onClick={nextCard} p="4" m="2" color="brand.900" bg="brand.500" border="solid 4px black">Next</Button>
-                    
                             <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
                             <Button
                              p="2" m="2" color="brand.900" bg="brand.700" border="solid 4px black"><Link to={`/edit/${flashcards[currentCardIndex]._id}`}>Edit Card</Link></Button>
                             <Button onClick={() => handleDeleteCard(flashcards[currentCardIndex])} p="2" m="2" bg="red.400" border="solid 4px black">Delete Card</Button>
                         
+                </Box>
+            ) : (
+                <Box color='brand.600' bg='pink.300' p='4' borderRadius='lg' boxShadow='lg' mt='10'>
+                    <Heading fontSize='24px' color='white' p='4'>My Flashcard Deck is Empty</Heading>
                 </Box>
             )}
         </Flex>
