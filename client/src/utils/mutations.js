@@ -43,13 +43,13 @@ export const ADD_CARD = gql`
 `;
 
 export const UPDATE_CARD = gql`
-  mutation updateCard($_id: ID!, $question: String!, $answer:String!) {
-    updateCard(_id: $_id, question: $question, answer: $answer) {
-      _id 
-      question
-      answer
-    }
+mutation updateCard($id: ID!, $question: String, $answer: String) {
+  updateCard(_id: $id, question: $question, answer: $answer) {
+    _id
+    answer
+    question
   }
+}
 `;
 
 export const REMOVE_CARD = gql`
