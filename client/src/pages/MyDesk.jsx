@@ -1,6 +1,16 @@
 import { Flex, Box, Heading, Link } from '@chakra-ui/react';
+import {useState, useEffect} from 'react'
+import quotes from '../utils/quotes.json';
 
 export default function MyDesk() {
+    const [randomQuote, setRandomQuote] = useState ('');
+    useEffect (() => {
+        const getRandomQuote = () => {
+            const randomIndex = Math.floor(Math.random () * quotes.length);
+            return quotes[randomIndex];
+        };
+        setRandomQuote (getRandomQuote ());
+    }, []);
     const linkStyle = {
         ':hover': {
             textDecoration:'none',
@@ -34,6 +44,11 @@ export default function MyDesk() {
                     Go to Jobs List
                 </Box>
             </Link>
+            {randomQuote && (
+                <Box mt='10' fontSize='16px' fontWeight='400' color='white'>
+                    "{randomQuote.quote}"
+                </Box>
+            )}
         </Flex>
     )
 }
