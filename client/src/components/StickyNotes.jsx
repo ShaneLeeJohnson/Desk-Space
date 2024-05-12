@@ -29,9 +29,9 @@ let addToList = e => {
     const newNotesItem = {
         input: input.current.value
     };
-// Clears all inputs after saving new item
+    // Clears all inputs after saving new item
     setNewNotesList([...newNotesList, newNotesItem]);
-        input.current.value
+    input.current.value = ''; // Reset input value to empty string
 };
 
 const deleteItem = index => {
