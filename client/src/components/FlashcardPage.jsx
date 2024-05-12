@@ -18,7 +18,7 @@ export default function FlashcardPage() {
     }, [data]);
     return ( 
         <>
-    <Flex flexFlow="column wrap" justifyContent="center" textAlign="center" bg="brand.900" color="brand.600">
+    <Flex flexFlow="column wrap" justifyContent="center" alignItems="center" textAlign="center" bg="brand.900" color="brand.600">
         <Box>
             <Heading fontWeight="300" fontSize="32px" mb="3">My Flashcards</Heading>
         </Box>

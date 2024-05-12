@@ -98,30 +98,30 @@ const buttonStyle = {
 return (
     <>
     <Flex bg="brand.900" flexFlow="column wrap" alignItems="center" textAlign="center" h="100%">
-        {flashcards && flashcards.length===0 && (
-            <Box fontSize="24px" m="5" color="brand.700">Your flashcard deck is empty!</Box>
-        )}
-        {flashcards && flashcards.length > 0 && (
-            <Flex>
+        {flashcards && flashcards.length > 0 ? (
             <Box color="brand.600">
+            <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
+            <IconButton p="2" m="2" mr="12" color="brand.900" bg="brand.700">
+                    <Link to={`/edit/${flashcards[currentCardIndex]._id}`}>
+                        <EditIcon />
+                    </Link>
+                </IconButton>
                 <IconButton onClick={prevCard} sx={buttonStyle} p="4" m="2" color="brand.900" bg="brand.500">
                     <ArrowBackIcon />
                 </IconButton>
                 <IconButton  onClick={nextCard}sx={buttonStyle}  p="4" m="2" color="brand.900" bg="brand.500">
                     <ArrowForwardIcon />
                 </IconButton>
-            <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
-                <IconButton p="2" m="2" color="brand.900" bg="brand.700">
-                    <Link to={`/edit/${flashcards[currentCardIndex]._id}`}>
-                        <EditIcon />
-                    </Link>
-                </IconButton>
-                <IconButton onClick={() => handleDeleteCard(flashcards[currentCardIndex])} p="2" m="2" bg="red.400">
+                <IconButton onClick={() => handleDeleteCard(flashcards[currentCardIndex])} p="2" m="2" ml="12" bg="red.400">
                     <DeleteIcon />
                 </IconButton>
             </Box>
-            </Flex>
+        ) : (
+            <Box color='brand.600' p='4' mt='10'>
+                <Heading fontSize="24px" mb="2" color="brand.700" fontWeight="400">Your flashcard deck is empty!</Heading>
+            </Box>
         )}
+    </Flex>
     <Flex flexFlow="column wrap" alignItems="center" textAlign="center" h="75vh">
     <Heading fontSize="24px" fontWeight="300" color="brand.600" mt="6" mb="4">Create A Flashcard</Heading>
         <Box p="2" bg="brand.500" borderRadius="10px" maxW="75%">
@@ -149,7 +149,6 @@ return (
     </form>
         </Box>
     </Flex>
-</Flex>
     </>
     )
 }
