@@ -4,12 +4,12 @@ import {FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube, FaPinterest, 
 const Footer = () => {
     return (
         <Box as='footer' color='black' bg="white" p="2" h='50px' bottom="0" width="100%">
-            <Flex justify='space-between' textAlign='center' mt="1" direction={['column', 'row']}>
+            <Flex justify={['center', 'space-between']} textAlign='center' mt="1" direction={['column', 'row']}>
                 <Text fontSize='lg' fontWeight='semi-bold' fontFamily='Nunito'>© 2024 DeskSpace. All Rights Reserved.</Text>
-                <Box display="inline-flex" textAlign='center'>
-                    <Text fontSize='lg' fontWeight='400'>Follow Us on GitHub!</Text>
+                <Flex alignItems='center' justifyContent={['center', 'flex-end']}>
+                    <Text fontSize='lg' fontWeight='400' mr={['0', '2']} textAlign={['center', 'right']}>Follow Us on GitHub!</Text>
                     <IconButton as={Link} href='https://github.com/ShaneLeeJohnson/Desk-Space' aria-label='GitHub' icon={<FaGithub />} variant='ghost' size='2xl' color='black' _hover={{color:'black'}} mr="2" ml="2"/>
-                </Box>
+                </Flex>
                     {/* <SimpleGrid columns={[4,8]} spacing={2}> */}
                         {/* <IconButton as={Link} href='https://facebook.com' aria-label='Facebook' icon={<FaFacebook />} variant='ghost' size='2xl' color='blue' _hover={{color:'black'}} mr={1}/>
                         <IconButton as={Link} href='https://instagram.com' aria-label='Instagram' icon={<FaInstagram />} variant='ghost' size='2xl' color='purple' _hover={{color:'black'}} mr={1}/>

@@ -101,20 +101,22 @@ return (
         {flashcards && flashcards.length > 0 ? (
             <Box color="brand.600">
             <Flashcard flashcard={flashcards[currentCardIndex]} key={flashcards[currentCardIndex]._id} />
-            <IconButton p="2" m="2" mr="12" color="brand.900" bg="brand.700">
-                    <Link to={`/edit/${flashcards[currentCardIndex]._id}`}>
-                        <EditIcon />
-                    </Link>
-                </IconButton>
-                <IconButton onClick={prevCard} sx={buttonStyle} p="4" m="2" color="brand.900" bg="brand.500">
-                    <ArrowBackIcon />
-                </IconButton>
-                <IconButton  onClick={nextCard}sx={buttonStyle}  p="4" m="2" color="brand.900" bg="brand.500">
-                    <ArrowForwardIcon />
-                </IconButton>
-                <IconButton onClick={() => handleDeleteCard(flashcards[currentCardIndex])} p="2" m="2" ml="12" bg="red.400">
-                    <DeleteIcon />
-                </IconButton>
+                <Flex justifyContent='center'>
+                    <IconButton p="2" m="2" mr="12" color="brand.900" bg="brand.700">
+                        <Link to={`/edit/${flashcards[currentCardIndex]._id}`}>
+                            <EditIcon />
+                        </Link>
+                    </IconButton>
+                    <IconButton onClick={prevCard} sx={buttonStyle} p="4" m="2" color="brand.900" bg="brand.500">
+                        <ArrowBackIcon />
+                    </IconButton>
+                    <IconButton  onClick={nextCard} sx={buttonStyle}  p="4" m="2" color="brand.900" bg="brand.500">
+                        <ArrowForwardIcon />
+                    </IconButton>
+                    <IconButton onClick={() => handleDeleteCard(flashcards[currentCardIndex])} p="2" m="2" ml="12" bg="red.400">
+                        <DeleteIcon />
+                    </IconButton>
+                </Flex>
             </Box>
         ) : (
             <Box color='brand.600' p='4' mt='10'>
