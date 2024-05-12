@@ -28,19 +28,17 @@ const EditFlashcard = () => {
         })
       }
     }, [data])
-   
+
 
   const [updateCard] = useMutation(UPDATE_CARD)
 
   const handleUpdateSubmit = async () => {
     try {
-       
         await updateCard({
             variables: {
                 id: id,
                 ...editedContent
             },
-           
         });
         window.location.replace('/flashcards')
     } catch (error) {
@@ -52,28 +50,38 @@ const EditFlashcard = () => {
       setEditedContent ({...editedContent, [name]: value});
   };
 
+  const buttonStyle = {
+    ':hover': {
+      bg: "brand.700"
+    }
+  }
   return (
-    <Flex flexflow="column wrap" alignItems="center" justifyContent="center">
-      <Box width="300px">
-    <FormLabel>Question:</FormLabel>
+    <Flex flexFlow="column wrap" alignItems="center" bg="brand.900" h="90vh">
+      <Box maxW="90%" w="280px">
+    <FormLabel color="white" fontSize="20px" fontWeight="400" mt="5">Question:</FormLabel>
         <Input
         name="question" 
           value={editedContent?.question}
           onChange={handleContentChange}
-          placeholder="Enter New Text"
+          placeholder="Enter New Question"
           mb={4}
+          bg="white"
+          maxW="95%"
         />
-         <FormLabel>Answer:</FormLabel>
+      <FormLabel color="white" fontSize="20px" fontWeight="400">Answer:</FormLabel>
         <Input
         name="answer"
           value={editedContent?.answer}
           onChange={handleContentChange}
-          placeholder="Enter New Text"
+          placeholder="Enter New Answer"
           mb={4}
+          bg="white"
+          maxW="95%"
         />
         <Button
           onClick={handleUpdateSubmit}
-          colorScheme="blue"
+          bg="brand.500"
+          sx={buttonStyle}
         >
           Save
         </Button>

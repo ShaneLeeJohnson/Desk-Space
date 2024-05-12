@@ -28,15 +28,17 @@ export default function Flashcard({flashcard}) {
             }}
             onClick={handleFlip}
             _hover={{bg:'brand.700'}}
-        >
+        >       
+            <Flex alignItems="center" justifyContent="center">
                 <Box position='absolute' top={0} left={0} w='100%' h='100%'>
-                    <Heading fontSize='xl' fontWeight='bold' color={isFlipped ? 'black' : 'white'} textAlign='center' mt='8%' style={{transform:isFlipped ? 'rotateY(180deg)' : 'none'}}>
+                    <Heading fontSize='lg' fontWeight='bold' color={isFlipped ? 'black' : 'white'} textAlign='center' mt='12' style={{transform:isFlipped ? 'rotateY(180deg)' : 'none'}}>
                         {isFlipped ? flashcard.answer : flashcard.question}
                     </Heading>
                     {!isFlipped && (
-                        <Text fontSize='lg' color='black' fontWeight='bold' textAlign='center' mt='2'>{flashcard.question}</Text>
+                        <Text fontSize='lg' color='black' fontWeight='bold' textAlign='center'>{flashcard.question}</Text>
                     )}
                 </Box>
+            </Flex>
             </animated.div>
         </Flex>
     )

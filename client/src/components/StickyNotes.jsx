@@ -57,8 +57,8 @@ const buttonStyle = {
 
 
 return (
-    <Flex bg="brand.800" flexDirection="column" alignItems="center" textAlign="center" w="100%" h="100%" borderRadius="0 0 10px 10px">
-        <Heading as="h3" fontSize="34px" fontWeight="300" color="brand.500" m="3">My Sticky Notes</Heading>
+    <Flex bg="brand.900" flexDirection="column" alignItems="center" textAlign="center" w="100%" h="100%" borderRadius="0 0 10px 10px">
+        <Heading as="h3" color="brand.700" mt="3" mb="6" fontSize="38px" fontWeight="400">My Sticky Notes</Heading>
         <Flex flexDirection="row" flexFlow="row wrap" alignItems="center" justifyContent="center" mb="6">
             {newNotesList.map((item, index) => (
             <Box key={index} alignItems="center"> 

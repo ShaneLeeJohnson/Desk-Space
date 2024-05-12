@@ -4,6 +4,14 @@
   font-style: normal;
 }
 
+.links {
+  color: rgb(193, 236, 251);
+}
+
+.links:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 992px) {
   body {
       flex-wrap: column wrap; 
