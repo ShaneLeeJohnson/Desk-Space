@@ -17,9 +17,10 @@ export default function Flashcard({flashcard}) {
         <Flex flexFlow='column wrap' alignItems='center' justifyContent='center' bg='brand.900' color='brand.600'>
             <animated.div style = {{transform,
                 boxShadow: isFlipped ? '-8px 8px 8px rgba(0, 0, 0, 0.2)' : '8px 8px 8px rgba(0, 0, 0, 0.1)',
-                width: '300px',
+                whiteSpaceCollapseidth: '350px',
+                maxWidth: '100%',
                 height: '200px',
-                position: 'relative',
+                minWidth: "100%",
                 borderRadius: '10px',
                 cursor: 'pointer',
                 backgroundColor: 'white',
@@ -29,16 +30,14 @@ export default function Flashcard({flashcard}) {
             onClick={handleFlip}
             _hover={{bg:'brand.700'}}
         >       
-            <Flex alignItems="center" justifyContent="center">
-                <Box position='absolute' top={0} left={0} w='100%' h='100%'>
-                    <Heading fontSize='lg' fontWeight='bold' color={isFlipped ? 'black' : 'white'} textAlign='center' mt='12' style={{transform:isFlipped ? 'rotateY(180deg)' : 'none'}}>
+                <Box p="5" mt="0">
+                    <Heading fontSize='lg' fontWeight='bold' color={isFlipped ? 'black' : 'white'} textAlign='center' style={{transform:isFlipped ? 'rotateY(180deg)' : 'none'}}>
                         {isFlipped ? flashcard.answer : flashcard.question}
                     </Heading>
                     {!isFlipped && (
                         <Text fontSize='lg' color='black' fontWeight='bold' textAlign='center'>{flashcard.question}</Text>
                     )}
                 </Box>
-            </Flex>
             </animated.div>
         </Flex>
     )
