@@ -1,4 +1,4 @@
-import { Flex, Box, FormControl, Input, Heading, IconButton } from '@chakra-ui/react';
+import { Flex, Box, FormControl, Input, Heading, Button, IconButton } from '@chakra-ui/react';
 import { DeleteIcon, AddIcon, EditIcon, ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons';
 import { useState, useRef } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
@@ -146,7 +146,7 @@ return (
             onChange={handleInputChange}
             bg="white"
             color="brand.900"/>
-        <IconButton type="submit" m="2" bg="brand.600" border="solid 3px gray"><AddIcon /></IconButton>
+        <Button type='submit' m='2' bg='brand.600' border='solid 3px gray'><AddIcon /></Button>
     </FormControl>
     </form>
         </Box>
