@@ -15,7 +15,7 @@ import {
 import { HamburgerIcon, CloseIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import Auth from "../utils/auth";
 
-
+// This provides navbar functionality and overall appearance including hamburger menu on mobile devices
 function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
 

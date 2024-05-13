@@ -10,6 +10,7 @@ const Footer = () => {
                     <Text fontSize='lg' fontWeight='400' mr={['0', '2']} textAlign={['center', 'right']}>Follow Us on GitHub!</Text>
                     <IconButton as={Link} href='https://github.com/ShaneLeeJohnson/Desk-Space' aria-label='GitHub' icon={<FaGithub />} variant='ghost' size='2xl' color='black' _hover={{color:'black'}} mr="2" ml="2"/>
                 </Flex>
+                {/* These icons can be used for future development as website expands social media reach */}
                     {/* <SimpleGrid columns={[4,8]} spacing={2}> */}
                         {/* <IconButton as={Link} href='https://facebook.com' aria-label='Facebook' icon={<FaFacebook />} variant='ghost' size='2xl' color='blue' _hover={{color:'black'}} mr={1}/>
                         <IconButton as={Link} href='https://instagram.com' aria-label='Instagram' icon={<FaInstagram />} variant='ghost' size='2xl' color='purple' _hover={{color:'black'}} mr={1}/>

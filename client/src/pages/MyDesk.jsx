@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import quotes from '../utils/quotes.json';
 import '../App.css';
 
+// This is overall appearance and functionality of MyDesk page including random quote generation and positioning
 export default function MyDesk() {
     const [randomQuote, setRandomQuote] = useState ('');
     useEffect (() => {

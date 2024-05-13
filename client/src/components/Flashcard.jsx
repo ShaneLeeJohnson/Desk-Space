@@ -5,6 +5,7 @@ import {useSpring, animated} from 'react-spring';
 
 export default function Flashcard({flashcard}) {
     const [isFlipped, setFlipped] = React.useState(false);
+    // This provides card flip animation and positioning
     const {transform, boxShadow} = useSpring ({
         transform: `perspective(600px) rotateY(${isFlipped ? 180 : 0}deg)`,
         boxShadow: isFlipped ? '0px 4px 20px rgba(0, 0, 0, 0.2)' : '0px 4px 20px rgba(0, 0, 0, 0.1)',
